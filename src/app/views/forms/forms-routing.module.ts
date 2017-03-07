@@ -12,7 +12,7 @@ const routes: Routes = [{
    {
   path:'',
   redirectTo: 'model',
-   pathMatch: 'full'
+   pathMatch: 'full' 
 },
 {
   path:'model',

@@ -1,0 +1,18 @@
+<p>My name is: 
+   {{ username | decap }} and your name actually entered: {{name | uppercase }}.
+</p>
+
+<p>
+
+{{ myData | initials:''}}
+
+</p>
+
+<div>sum1: <input [(ngModel)]="sum"> </div>
+<div>sum2: <input [(ngModel)]="sum1"> </div>
+<div>minus: <input [(ngModel)]="minus"> </div>
+<p>
+
+res: {{sum | division: sum1: minus}}
+
+</p>

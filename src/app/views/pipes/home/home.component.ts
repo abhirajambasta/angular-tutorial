@@ -6,7 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
+submenu = [{
+    name: 'Angular',
+    path: 'angular'
+  }, {
+    name: 'Custom',
+    path: 'custom'
+  }];
   constructor() { }
 
   ngOnInit() {
