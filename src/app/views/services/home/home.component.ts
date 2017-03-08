@@ -9,6 +9,14 @@ export class HomeComponent implements OnInit {
 submenu = [{
     name: 'HTTP',
     path: 'http'
+  },
+  {
+    name: 'Shared',
+    path: 'shared'
+  },
+  {
+    name: 'Shared Again',
+    path: 'shared-again'
   }];
   constructor() { }
 

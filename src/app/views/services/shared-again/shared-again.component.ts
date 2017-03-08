@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SharedService } from '../shared.service';
 
 @Component({
   selector: 'app-shared-again',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SharedAgainComponent implements OnInit {
 
-  constructor() { }
+  constructor(private sharedService: SharedService) { }
 
   ngOnInit() {
+    this.Logger("info", "I am loading the shared-again component");
+  }
+
+  Logger(console: string, txt: string) {
+    this.sharedService[console](txt);
+  }
+
+  calciroot() {
+    this.sharedService.getVal();
   }
 
 }
