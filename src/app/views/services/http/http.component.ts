@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../../../core/service/http.service';
-import { DataService } from '../../../core/service/http.interceptor';
+import { HttpInterceptor } from '../../../core/interceptor/interceptor.service';
 
 @Component({
   selector: 'app-http',
@@ -9,9 +9,10 @@ import { DataService } from '../../../core/service/http.interceptor';
 })
 export class HttpComponent implements OnInit {
 items: any;
-constructor(httpService: HttpService, data: DataService) {
-    httpService.gettitle().then(response => {
-      this.items = response["items"];
+constructor(http: HttpInterceptor) {
+    console.log(http.get('http://127.0.0.1:8887/title.json'));
+    http.get('http://127.0.0.1:8887/title.json').toPromise().then(response => {
+      console.log(response);
     })
   }
   ngOnInit() {

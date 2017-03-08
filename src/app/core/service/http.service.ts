@@ -4,7 +4,7 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class HttpService {
-  private Title = 'http://192.168.1.6:8887/json.txt';// URL to web api
+  private Title = 'http://127.0.0.1:8887/title.json';// URL to web api
   private footerLinks = "";
   constructor(private http: Http) { }
 gettitle(): Promise<{}> {

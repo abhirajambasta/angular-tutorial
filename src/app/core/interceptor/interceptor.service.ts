@@ -30,20 +30,8 @@ export class HttpInterceptor extends Http {
    * @returns {Observable<>}
    */
   get(url: string, options?: RequestOptionsArgs): Observable<any> {
-    this.beforeRequest();
-    return super.get(this.getFullUrl(url), this.requestOptions(options))
-      .catch(this.onCatch)
-      .do((res: Response) => {
-        this.onSuccess(res);
-      }, (error: any) => {
-        this.onError(error);
-      })
-      .finally(() => {
-        this.onFinally();
-      });
+    return super.get(url, this.requestOptions(options));
   }
-
-  // Implement POST, PUT, DELETE HERE
 
   /**
    * Request options.
@@ -56,67 +44,12 @@ export class HttpInterceptor extends Http {
     }
     if (options.headers == null) {
       options.headers = new Headers({
-        'Authorization': `Basic ${environment.basic_auth_token}`,
-        'X-Auth-Token': localStorage.getItem('access_token')
+        'Authorization': "xyz",
+        'X-Auth-Token': "abc"
       });
     }
+    console.log(options);
     return options;
   }
 
-  /**
-   * Build API url.
-   * @param url
-   * @returns {string}
-   */
-  private getFullUrl(url: string): string {
-    return environment.apiEndpoint + url;
-  }
-
-  /**
-   * Before any Request.
-   */
-  private beforeRequest(): void {
-    console.log("in beforeRequest");
-  }
-
-  /**
-   * After any request.
-   */
-  private afterRequest(): void {
-    console.log("in afterRequest");
-  }
-
-  /**
-   * Error handler.
-   * @param error
-   * @param caught
-   * @returns {ErrorObservable}
-   */
-  private onCatch(error: any, caught: Observable<any>): Observable<any> {
-    console.log("in onCatch");
-    return Observable.throw(error);
-  }
-
-  /**
-   * onSuccess
-   * @param res
-   */
-  private onSuccess(res: Response): void {
-    console.log(res);
-  }
-
-  /**
-   * onError
-   * @param error
-   */
-  private onError(error: any): void {
-    console.log("in onError");
-  }
-
-  /**
-   * onFinally
-   */
-  private onFinally(): void {
-    this.afterRequest();
-  }
 }
